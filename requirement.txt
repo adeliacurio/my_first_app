@@ -1,7 +1,3 @@
 pandas 
 plotly_express 
-<<<<<<< HEAD
 streamlit
-=======
-streamlit
->>>>>>> 102185136d615308ac6686628dc09fbf1bd33165
