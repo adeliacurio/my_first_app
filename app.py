@@ -2,7 +2,7 @@ import pandas as pd
 import plotly.express as px
 import streamlit as st
         
-car_data = pd.read_csv('~/vehicles.csv') # lendo os dados
+car_data = pd.read_csv('vehicles.csv') # lendo os dados
 st.header('Vendas de carros a partir de anúncios') # título do aplicativo
 st.write('Este aplicativo cria um histograma para o conjunto de dados de anúncios de vendas de carros') # descrição do aplicativo
 st.write('O conjunto de dados contém informações sobre anúncios de vendas de carros, incluindo o odômetro, preço e outros detalhes.') # descrição do conjunto de dados
