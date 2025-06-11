@@ -2,14 +2,14 @@ import pandas as pd
 import plotly.express as px
 import streamlit as st
 
-# ============== CONFIGURAÇÃO DA PÁGINA ==============
+# CONFIGURAÇÃO DA PÁGINA
 st.set_page_config(
     page_title="Análise de Carros Usados",
     page_icon="🚗",
     layout="wide"
 )
 
-# ============== CSS PERSONALIZADO ==============
+# CSS PERSONALIZADO
 st.markdown("""
 <style>
     /* Fundo suave e temático */
@@ -42,14 +42,14 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# ============== CARREGAMENTO DOS DADOS ==============
+# CARREGAMENTO DOS DADOS
 car_data = pd.read_csv('vehicles.csv')
 
-# ============== HEADER ==============
+# HEADER
 st.markdown("# 🚗 Análise de Anúncios de Carros Usados")
 st.markdown("Visualizações interativas com a paleta Viridis 🌈")
 
-# ============== SIDEBAR (FILTROS) ==============
+# SIDEBAR
 with st.sidebar:
     st.image("https://cdn-icons-png.flaticon.com/512/2063/2063512.png", width=80)
     st.title("Filtros")
@@ -62,7 +62,7 @@ with st.sidebar:
         value=(2010, 2020)
     )
     
-    # Filtro por preço (extra bonus!)
+    # Filtro por preço
     price_range = st.slider(
         "Faixa de preço (USD):",
         min_value=int(car_data['price'].min()),
@@ -70,7 +70,7 @@ with st.sidebar:
         value=(5000, 30000)
     )
 
-# ============== APLICAR FILTROS ==============
+# APLICAR FILTROS
 filtered_data = car_data[
     (car_data['model_year'] >= year_range[0]) & 
     (car_data['model_year'] <= year_range[1]) &
@@ -78,7 +78,7 @@ filtered_data = car_data[
     (car_data['price'] <= price_range[1])
 ]
 
-# ============== ABAS ==============
+# ABAS
 tab1, tab2, tab3 = st.tabs(["📊 Dados", "📈 Histograma", "✨ Dispersão"])
 
 with tab1:
@@ -131,6 +131,6 @@ with tab3:
         )
         st.plotly_chart(fig, use_container_width=True)
 
-# ============== RODAPÉ ==============
+# RODAPÉ
 st.markdown("---")
 st.markdown("🎨 Paleta Viridis | ✨ by Adélia Cúrio 🐋")
